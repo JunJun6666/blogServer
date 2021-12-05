@@ -68,8 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(
-                "/login",
-                "/logout",
+                "/user/login",
+                "/user/logout",
                 "/ws/**",
                 "/css/**",
                 "/js/**",

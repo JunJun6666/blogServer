@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wang.server.common.Result.R;
 import com.wang.server.common.Result.ResultEnum;
 import com.wang.server.common.jwt.JwtTokenUtil;
+import com.wang.server.common.utils.LoginUtils;
 import com.wang.server.entity.LoginUser;
 import com.wang.server.entity.Role;
 import com.wang.server.entity.UserInfo;
@@ -78,5 +79,10 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
     @Override
     public List<Role> getRolesByAdminId(String id) {
         return userMapper.getRolesByAdminId(id);
+    }
+
+    @Override
+    public R getUserInfo() {
+        return R.ok().data("user" , LoginUtils.getUser());
     }
 }

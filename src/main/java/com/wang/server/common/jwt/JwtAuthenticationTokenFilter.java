@@ -41,7 +41,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             String username = jwtTokenUtil.getUserNameByToken(token);
             //token存在用户名，未登录
             if(null != username && null == SecurityContextHolder.getContext().getAuthentication()){
-                //登录
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 //验证token是否有效，重新设置用户对象
                 if(jwtTokenUtil.validateToken(token , userDetails)){

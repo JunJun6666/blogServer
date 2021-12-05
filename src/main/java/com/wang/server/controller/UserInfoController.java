@@ -7,8 +7,7 @@ import com.wang.server.service.UserInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -20,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(tags = "用户模块")
 @RestController
+@RequestMapping("/user")
+@CrossOrigin
 public class UserInfoController {
 
     @Autowired
@@ -27,8 +28,14 @@ public class UserInfoController {
 
     @ApiOperation(value = "登录之后返回token")
     @PostMapping("/login")
-    public R login(LoginUser loginUser){
+    public R login(@RequestBody  LoginUser loginUser){
         return userService.login(loginUser);
+    }
+
+    @ApiOperation(value = "查询用户信息")
+    @GetMapping("/getUserInfo")
+    public R getUserInfo(){
+        return userService.getUserInfo();
     }
 
 }

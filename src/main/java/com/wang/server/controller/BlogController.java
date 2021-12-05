@@ -5,6 +5,7 @@ import com.wang.server.common.Result.R;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,16 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(tags = "博客信息模块")
 @RestController
+@RequestMapping("/blog")
 public class BlogController {
 
 
-    @GetMapping("/blog")
+    @GetMapping("/")
     public R queryPage(){
         return R.ok();
     }
 
 
-    @PostMapping("/blog")
+    @PostMapping("/")
     public R add(){
         return R.ok();
     }

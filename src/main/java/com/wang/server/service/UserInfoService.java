@@ -23,4 +23,6 @@ public interface UserInfoService extends IService<UserInfo> {
     UserInfo getAdminByUserName(String username);
 
     List<Role> getRolesByAdminId(String id);
+
+    R getUserInfo();
 }
