@@ -1,5 +1,6 @@
 package com.wang.server.mapper;
 
+import com.wang.server.common.dataoriginconfig.DataSource;
 import com.wang.server.dto.ResourceRoleDTO;
 import com.wang.server.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -18,5 +19,6 @@ import java.util.List;
 @Mapper
 public interface RoleMapper extends BaseMapper<Role> {
 
+    @DataSource(name = "b-database")
     List<ResourceRoleDTO> listResourceRoles();
 }

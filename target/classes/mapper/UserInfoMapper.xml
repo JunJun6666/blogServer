@@ -16,5 +16,13 @@
           AND us.role_id = r.id
           AND u.id = #{id}
     </select>
+    <select id="getOne" resultType="com.wang.server.entity.UserInfo">
+        select
+               *
+        from
+             user_info
+        where user_name = #{username}
+
+    </select>
 
 </mapper>

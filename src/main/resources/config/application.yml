@@ -3,11 +3,16 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    username: root
-#    没有密码
-#    password: admin
+    a-database: # 主数据源
+      url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: ''
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    b-database: # 从数据源
+      url: jdbc:mysql://localhost:3306/blog_user?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: ''
+      driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
 #      连接池名
       pool-name: DateHikariCP
@@ -74,4 +79,11 @@ jwt:
   expiration: 604800
   # Jwt负载中拿到开头
   tokenHead: Bearer
+
+upload:
+  oss:
+    endpoint: ******************
+    accessKeyId: ******************
+    accessKeySecret: ******************
+    bucketName: ******************
 
