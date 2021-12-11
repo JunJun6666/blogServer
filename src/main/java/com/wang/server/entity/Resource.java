@@ -1,11 +1,14 @@
 package com.wang.server.entity;
 
-import java.time.LocalDateTime;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -22,6 +25,7 @@ public class Resource implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(type = IdType.ASSIGN_UUID)
     @ApiModelProperty(value = "资源名")
     private String resourceName;
 

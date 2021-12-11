@@ -2,7 +2,10 @@ package com.wang.server.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.wang.server.common.Result.R;
 import com.wang.server.entity.Blog;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -14,4 +17,7 @@ import com.wang.server.entity.Blog;
  */
 public interface BlogService extends IService<Blog> {
 
+    R add(Blog blog);
+
+    R queryPage(Map<String, Object> param);
 }

@@ -2,11 +2,14 @@ package com.wang.server.controller;
 
 
 import com.wang.server.common.Result.R;
+import com.wang.server.entity.Blog;
+import com.wang.server.service.BlogService;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -21,16 +24,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/blog")
 public class BlogController {
 
+    @Autowired
+    private BlogService blogService;
 
     @GetMapping("/")
-    public R queryPage(){
-        return R.ok();
+    @ApiOperation(value = "所有博客")
+    public R queryPage(@RequestParam Map<String, Object> param){
+        return blogService.queryPage(param);
     }
 
 
     @PostMapping("/")
-    public R add(){
-        return R.ok();
+    @ApiOperation(value = "写博客")
+    public R add(@RequestBody Blog blog){
+        return blogService.add(blog);
     }
 
 }

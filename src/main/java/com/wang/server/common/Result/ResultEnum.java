@@ -26,6 +26,7 @@ public enum ResultEnum {
     ERROR_SETTING_AGE(1012, "设置年龄错误，必须为纯数字"),
     ERROR_SETTING_EMAIL(1012, "设置邮箱错误"),
     ILLEGAL_OPERATION(4001, "非法操作"),
+    FILE_FORMAT_ERROR(5001, "文件上传格式错误"),
     ;
 
 

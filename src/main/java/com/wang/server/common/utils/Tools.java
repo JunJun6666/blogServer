@@ -1,7 +1,9 @@
 package com.wang.server.common.utils;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -358,6 +360,25 @@ public class Tools {
 	 */
 	public static LocalTime nowTime(){
 		return LocalTime.now();
+	}
+
+	public static void addJson(HttpServletResponse httpServletResponse, String code , String errorMsg) throws Exception{
+		try {
+			httpServletResponse.setCharacterEncoding("utf-8");
+			httpServletResponse.setContentType("application/json; charset=utf-8");
+			httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
+			httpServletResponse.setHeader("Cache-Control", "no-cache");
+			PrintWriter out = httpServletResponse.getWriter();
+			JSONObject res = new JSONObject();
+			res.put("code",code);
+			res.put("msg",errorMsg);
+			out.write(res.toString());
+			out.flush();
+			out.close();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
 	}
 
 }

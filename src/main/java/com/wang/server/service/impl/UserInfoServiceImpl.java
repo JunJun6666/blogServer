@@ -67,7 +67,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         Map<String,Object> tokenMap = new HashMap<>();
         tokenMap.put("token",token);
         tokenMap.put("tokenHead",tokenHead);
-        return R.ok().data("token",tokenMap);
+        return R.ok().resultEnum(ResultEnum.LOGIN_SUCCESS).data("token",tokenMap);
     }
 
     @Override

@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wang.server.mapper.BlogMapper">
+    <resultMap id="res" type="com.wang.server.entity.Blog" />
+
+    <select id="queryPage" resultMap="res">
+        select
+            b.id , b.title , b.create_time , b.content , b.remark , t.type as typeId , u.user_name as create_user
+        from
+            blog b left join `type` t on b.type_id = t.id
+                   left join `user_info` u on b.create_user = u.id
+        where 1 = 1
+        order by b.create_time desc
+    </select>
 
 </mapper>
